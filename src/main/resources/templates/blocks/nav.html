@@ -1,0 +1,26 @@
+<nav th:fragment="nav" class="navbar navbar-light navbar-expand-lg bg-white clean-navbar">
+    <div class="container"><a class="navbar-brand logo" href="/">RecruitEmployees</a>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav ms-auto">
+                <li th:if="${role == 'MANAGER'}" class="nav-item"><a class="nav-link" href="/humans/add">Добавить</a></li>
+                <li th:if="${role == 'MANAGER'}" class="nav-item"><a class="nav-link" href="/vacancy">Заявки кандидатов</a></li>
+                <li th:if="${role == 'CLIENT'}" class="nav-item"><a class="nav-link" href="/profile">Мой профиль</a></li>
+                <li th:if="${role == 'ADMIN'}" class="nav-item"><a class="nav-link" href="/users">База компании</a></li>
+                <li th:if="${role == 'ADMIN'}" class="nav-item"><a class="nav-link" href="/statistics">Рейтинг кандидатов</a></li>
+                <li th:if="${role == 'ADMIN' or role == 'MANAGER'}" class="nav-item"><a class="nav-link" href="/catalog">База кандидатов</a></li>
+                <li class="nav-item"><a class="nav-link" href="/reviews">Обсуждение вакансий</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">Наш офис</a></li>
+                <li th:if="${role != 'ADMIN'}" class="nav-item"><a class="nav-link" href="/apps">Задать вопрос</a></li>
+                <li th:if="${role == 'NOT'}" class="nav-item"><a class="nav-link" href="/login">Вход</a></li>
+                <li th:if="${role == 'NOT'}" class="nav-item"><a class="nav-link" href="/reg">Регистрация</a></li>
+                <li th:if="${role != 'NOT'}" class="nav-item">
+                    <form action="/logout" method="post">
+                        <button class="btn" type="submit">Выход</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
